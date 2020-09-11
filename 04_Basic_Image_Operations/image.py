@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """ Operações Básicas com Imagens em Python
 
 Imagens são representadas pelo OpenCV na forma de vetores Numpy com 3 dimensões. Cada imagem é composta por linhas e
@@ -36,9 +39,15 @@ https://www.codementor.io/@innat_2k14/image-data-analysis-using-numpy-opencv-par
 
 """
 
-# Em main, definimos a função principal do arquivo, onde as operações com imagens são executadas.
+__author__ = "Eloi Giacobbo"
+__copyright__ = 'Copyright 2020, OpenCV Python Tutorial'
+__credits__ = ["Emili Bohrer"]
+__license__ = "GPL-3.0"
+__version__ = "0.1.0"
+__maintainer__ = "Eloi Giacobbo"
+__status__ = "Development"
 
-
+# Em main, definimos a função principal do arquivo, onde as operações com imagens são executadas
 def main(image_path, verbose=False):
     """ Operações Básicas com Imagens
 
@@ -212,6 +221,7 @@ def main(image_path, verbose=False):
     # objeto de imagem no caminho indicado.
     cv2.imwrite("output_image.jpg", stacked)
     cv2.destroyAllWindows()
+
 
 # Para finalizar, realizamos a chamada da função main, que receberá parâmetros a partir da linha de comandos
 if __name__ == '__main__':
