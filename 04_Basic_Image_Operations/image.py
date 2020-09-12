@@ -19,8 +19,11 @@ Neste primeiro tutorial veremos como:
     - Manipular escalas de cores;
     - Dividir e combinar canais de cores;
 
-Para executar este código, execute o seguinte comando:
+Para executar este código, utilize o seguinte comando em seu terminal:
 $ python image.py -i ../99_Images/summer.jpg
+
+As interpretações e comentários realizados ao longo deste arquivo tomam por base o uso da imagem "summer.jpg", presente
+no diretório ../99_Images.
 
 Referências:
 
@@ -43,7 +46,7 @@ __author__ = "Eloi Giacobbo"
 __copyright__ = 'Copyright 2020, OpenCV Python Tutorial'
 __credits__ = ["Emili Bohrer"]
 __license__ = "GPL-3.0"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __maintainer__ = "Eloi Giacobbo"
 __status__ = "Development"
 
@@ -195,26 +198,40 @@ def main(image_path, verbose=False):
     # podem ser mesclados novamente para formar uma imagem BGR.
     (b, g, r) = cv2.split(roi)
     merged = cv2.merge((b, g, r))
+    stacked = np.hstack((roi, merged))
+    cv2.imshow("ROI-Merged", stacked)
     stacked = np.hstack((b, g, r))
-    cv2.imshow("ROI", roi)
-    cv2.imshow("Split", stacked)
-    cv2.imshow("Merged", merged)
+    cv2.imshow("Blue-Green-Red", stacked)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
     # Como você deve ter notado, o resultado da separação dos canais resulta mais uma vez em imagens em escala de cinza.
     # Após a separação de canais, temos 3 novos objetos com um único canal de cor. Por padrão, o OpenCV interpreta
-    # imagens com um único canal em escala de cinza. Para facilitar a identificação de cada canal, podemos agora
-    # ajustar estes objetos para uma representação em 3 canais, preenchendo os canais faltantes com zeros. Desta forma
-    # teremos uma visão mais clara da participação de cada canal de cor na formação da imagem original.
+    # imagens com um único canal em escala de cinza. E como devemos interpretar estas imagens? Quanto mais próximo da
+    # cor branca um pixel estiver, maior é a presença do canal de cor ele representa sobre a imagem original. Quanto
+    # mais próximo da cor preta um pixel estiver, menor é a presença do canal de cor ele representa sobre a imagem
+    # original.
+
+    # Para facilitar a identificação de cada canal e a interpretação de sua imagem, podemos agora ajustar estes objetos
+    # para uma representação em 3 canais, preenchendo os canais faltantes com zeros. Desta forma teremos uma visão mais
+    # clara da participação de cada canal de cor na formação da imagem original.
     (height, width, depth) = roi.shape
     zeros = np.zeros((height, width), dtype="uint8")
     b = cv2.merge((b, zeros, zeros))
     g = cv2.merge((zeros, g, zeros))
     r = cv2.merge((zeros, zeros, r))
     stacked = np.hstack((roi, b, g, r, merged))
-    cv2.imshow("Split", stacked)
+    cv2.imshow("ROI-Blue-Green-Red-Merged", stacked)
     cv2.waitKey(0)
+
+    # Como resultado, fica evidente qual canal de cor cada uma destas imagens representa, assim como sua interpretação.
+    # Quanto mais próximo um pixel estiver da cor de seu canal, maior é a presença desta cor sobre a imagem original.
+    # Quanto mais próximo da cor preta um pixel estiver, menor é a presença do canal de cor ele representa sobre a
+    # imagem original. Note, por exemplo, como o fundo de todas as imagens é representado pela cor pura de seu canal.
+    # Isto se deve pelo fato de que o fundo desta imagem é branco. Observe também as diferenças entre os canais nos
+    # contornos e a no preenchimento deste sol. As bordas possuem pouca presença de cada canal, por ser desenhada na cor
+    # preta. Já o preenchimento do sol possui certa presença dos canais verde e vermelho para formar os tons de laranja
+    # desta imagem.
 
     # Uma vez que todas todas as operações com imagens deste tutorial foram apresentadas, podemos finalizar a execução
     # main ao salvar nossa última em imágem em disco. O método imwrite do módulo cv2 é capaz de realizar a escrita de um

@@ -16,7 +16,7 @@ A cada módulo deste projeto você encontrará implementações simples, com ref
 
 ### [04. Operações Básicas com Imagens](https://github.com/eloiluiz/opencv-python-tutorial/blob/master/04_Basic_Image_Operations/image.py)
 
-### 05. Desenhando sobre Imagens
+### [05. Desenhando sobre Imagens](https://github.com/eloiluiz/opencv-python-tutorial/blob/master/05_Drawing_Images/drawing.py)
 
 ### 06. Transformação de Imagens
 
