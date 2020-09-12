@@ -8,10 +8,27 @@ Este repositório pretende apresentar algumas ferramentas e facilitar o uso prá
 
 A cada módulo deste projeto você encontrará implementações simples, com referências teóricas e ricas em comentários.
 
-## 1. Instalação do OpenCV-4.0.0 no WSL2
+### 01. Instalação do OpenCV-4.0.0 no WSL2
 
-## 2. Instalação e Configuração do Visual Studio Code
+### 02. Instalação e Configuração do Visual Studio Code
 
-## 3. Detecção de Faces com Python e OpenCV
+### 03. Detecção de Faces com Python e OpenCV
 
-## 4. Operações Básicas com Imagens
+### [04. Operações Básicas com Imagens](https://github.com/eloiluiz/opencv-python-tutorial/blob/master/04_Basic_Image_Operations/image.py)
+
+### 05. Desenhando sobre Imagens
+
+### 06. Transformação de Imagens
+
+### 07. Histograma
+
+### 08. Convolução
+
+### 09. Suavização de Imagens
+
+### 10. Thresholding
+
+### 11. Detecção de Bordas
+
+### 12. Contornos
+
