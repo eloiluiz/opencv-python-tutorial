@@ -1,0 +1,8 @@
+# Instalação e Configuração do Visual Studio Code
+E escolha de uma IDE ou editor de textos para o desenvolvimento de projetos é algo bastante pessoal e depende muito do tipo de projeto que estamos trabalhando. Atualmente, estou utilizando o Visual Studio Code (vscode) em meus estudos com visão computacional. O vscode é uma ferramenta de edição leve, flexível e fácil de usar. Em uma única ferramenta, consigo programar na linguagem Python, gerenciar ambientes virtuais, trabalhar com arquivos markdown e integrar meu projeto ao WSL. Para mais informações sobre o vscode, confira o artigo [Python in Visual Studio Code](https://code.visualstudio.com/docs/languages/python) disponível na página do [Visual Studio Code](https://code.visualstudio.com/).
+
+Quem tiver interesse em experimentar o vscode, estou utilizando o seguinte conjunto de extensões:
+* Python (ms-python.python): que oferece ao vscode um suporte básico à linguagem Python;
+* Remote - WSL (ms-vscode-remote.remote-wsl): permite a integração entre o vscode e o WSL. Através desta extensão o vscode será capaz de utilizar o interpretador Python e ambientes virtuais instalados em seu WSL e abrir terminais mais facilmente;
+* Terminal Here (tyriar.vscode-terminal-here): terminais criados através da extensão Terminal Here serão abertos automaticamente em seu diretório de trabalho ativo;
+* Python Docstring Generator (njpwerner.autodocstring): gera automaticamente docstrings detalhadas para documentação de funções Python;

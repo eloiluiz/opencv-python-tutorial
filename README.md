@@ -10,7 +10,7 @@ A cada módulo deste projeto você encontrará implementações simples, com ref
 
 ### [01. Instalação do OpenCV-4.0.0 no WSL2](01_OpenCV_Install/README.md)
 
-### 02. Instalação e Configuração do Visual Studio Code
+### [02. Instalação e Configuração do Visual Studio Code](02_VSCode_Setup/README.md)
 
 ### 03. Detecção de Faces com Python e OpenCV
 
