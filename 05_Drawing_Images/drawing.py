@@ -12,11 +12,11 @@ de uma imagem, cor e espessura estão presentes em todas as funções de desenho
 Veremos mais detalhes sobre cada um destes parâmetros ao longo deste arquivo.
 
 Neste tutorial, exploraremos algumas funções que podem nos ajudar a desenhar formas em imagens. São elas:
-    - cv2.line()
-    - cv2.rectangle()
-    - cv2.circle()
-    - cv2.ellipse()
-    - cv2.putText()
+    - cv2.line();
+    - cv2.rectangle();
+    - cv2.circle();
+    - cv2.ellipse();
+    - cv2.putText().
 
 Para executar este código, utilize o seguinte comando em seu terminal:
 $ python drawing.py
@@ -41,7 +41,7 @@ __author__ = "Eloi Giacobbo"
 __copyright__ = 'Copyright 2020, OpenCV Python Tutorial'
 __credits__ = ["Emili Bohrer"]
 __license__ = "GPL-3.0"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __maintainer__ = "Eloi Giacobbo"
 __status__ = "Development"
 

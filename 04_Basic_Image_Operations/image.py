@@ -17,7 +17,7 @@ Neste primeiro tutorial veremos como:
     - Definir regiões de imagem (ROI - Region of Image);
     - Criar bordas em imagens.
     - Manipular escalas de cores;
-    - Dividir e combinar canais de cores;
+    - Dividir e combinar canais de cores.
 
 Para executar este código, utilize o seguinte comando em seu terminal:
 $ python image.py -i ../99_Images/summer.jpg
@@ -46,7 +46,7 @@ __author__ = "Eloi Giacobbo"
 __copyright__ = 'Copyright 2020, OpenCV Python Tutorial'
 __credits__ = ["Emili Bohrer"]
 __license__ = "GPL-3.0"
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __maintainer__ = "Eloi Giacobbo"
 __status__ = "Development"
 
@@ -60,12 +60,18 @@ def main(image_path, verbose=False):
     """
 
     # Primeiro, devemos incluir as bibliotecas necessárias.
-    import matplotlib.pyplot as plt
     import numpy as np
     import cv2
+    import errno
+    import os
+    import matplotlib.pyplot as plt
 
     # Utilizando o parâmetro image_path, a imagem selecionada é carregada através do comando imread do módulo cv2.
     image = cv2.imread(image_path)
+
+    # Check if a valid image was read
+    if (image is None):
+        raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), image_path)
 
     # Ao imprimir o objeto image, vemos que este se trata de uma matrix de arrays.
     print("Image =\n", image)
@@ -105,8 +111,10 @@ def main(image_path, verbose=False):
     copy = image.copy()
 
     # O mesmo método utilizado para o acesso de pixels pode ser utilizado também para redefinir os pixels de uma imagem.
+    # Nas operações a seguir, redefinimos o pixel de coordenada (0, 0) para a cor vermelha e uma área da imagem entre as
+    # cordenadas (250:300, 50:100) para a cor azul.
     copy[0, 0] = (0, 0, 255)
-    copy[300:350, 50:100] = (255, 0, 0)
+    copy[250:300, 50:100] = (255, 0, 0)
 
     # Para imprimir a imagem original e sua cópia lado-a-lado, o método hstack pode ser utilizado para empilhar imagens
     # horizontalmente.
@@ -117,7 +125,7 @@ def main(image_path, verbose=False):
     # Outra operação comum no processamento de imagem é a definições de regiões de imagem (ROI). Através deste método
     # somos capazes de separar regiões de interesse em uma imagem maior, podendo tratá-las separadamente. Para executar
     # esta operação, iremos recorrer novamente ao método de acesso às regiões de pixel desejadas.
-    roi = image[60:160, 185:290]
+    roi = image[50:149, 87:189]
 
     # Ao atribuir esta região de imagem a uma nova variável somos capazes de criar uma nova imagem.
     cv2.imshow("Image", roi)
@@ -163,9 +171,9 @@ def main(image_path, verbose=False):
     # Para exercitar os métodos que vimos até o momento, podemos criar uma única imagem com diferentes padrões de cores
     # ao utilizar o método de conversão de cores em partes separadas de uma mesma imagem.
     color = image.copy()
-    color[0:320, 321:640] = cv2.cvtColor(color[0:320, 321:640], cv2.COLOR_BGR2RGB)
-    color[321:640, 0:320] = cv2.cvtColor(color[321:640, 0:320], cv2.COLOR_BGR2HLS)
-    color[321:640, 321:640] = cv2.cvtColor(color[321:640, 321:640], cv2.COLOR_BGR2LAB)
+    color[0:160, 161:320] = cv2.cvtColor(color[0:160, 161:320], cv2.COLOR_BGR2RGB)
+    color[161:320, 0:160] = cv2.cvtColor(color[161:320, 0:160], cv2.COLOR_BGR2HLS)
+    color[161:320, 161:320] = cv2.cvtColor(color[161:320, 161:320], cv2.COLOR_BGR2LAB)
     cv2.imshow("Image", color)
     cv2.waitKey(0)
 

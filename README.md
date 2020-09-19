@@ -18,7 +18,7 @@ A cada módulo deste projeto você encontrará implementações simples, com ref
 
 ### [05. Desenhando sobre Imagens](05_Drawing_Images/drawing.py)
 
-### 06. Transformação de Imagens
+### [06. Transformação Geométricas de Imagens](06_Image_Transformations/transformation.py)
 
 ### 07. Histograma
 
