@@ -20,10 +20,7 @@ Neste primeiro tutorial veremos como:
     - Dividir e combinar canais de cores.
 
 Para executar este código, utilize o seguinte comando em seu terminal:
-$ python image.py -i ../99_Images/summer.jpg
-
-As interpretações e comentários realizados ao longo deste arquivo tomam por base o uso da imagem "summer.jpg", presente
-no diretório ../99_Images.
+$ python image.py
 
 Referências:
 
@@ -46,17 +43,13 @@ __author__ = "Eloi Giacobbo"
 __copyright__ = 'Copyright 2020, OpenCV Python Tutorial'
 __credits__ = ["Emili Bohrer"]
 __license__ = "GPL-3.0"
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __maintainer__ = "Eloi Giacobbo"
 __status__ = "Development"
 
 # Em main, definimos a função principal do arquivo, onde as operações com imagens são executadas
-def main(image_path, verbose=False):
+def main():
     """ Operações Básicas com Imagens
-
-    Args:
-        image_path (str): Endereço da imagem a ser manipulada.
-        verbose (bool, optional): Modo verbose. Desativado por padrão.
     """
 
     # Primeiro, devemos incluir as bibliotecas necessárias.
@@ -66,12 +59,13 @@ def main(image_path, verbose=False):
     import os
     import matplotlib.pyplot as plt
 
-    # Utilizando o parâmetro image_path, a imagem selecionada é carregada através do comando imread do módulo cv2.
-    image = cv2.imread(image_path)
+    # Utilizando o parâmetro caminho relativo para a imagem "summer.jpg", presente na pasta 99_Images deste repositório,
+    # a imagem selecionada é carregada através do comando imread do módulo cv2.
+    image = cv2.imread("../99_Images/summer.jpg")
 
-    # Check if a valid image was read
+    # Para garantir a correta execução deste código, verificamos se a imagem anterior foi carregada corretamente
     if (image is None):
-        raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), image_path)
+        raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), "../99_Images/summer.jpg")
 
     # Ao imprimir o objeto image, vemos que este se trata de uma matrix de arrays.
     print("Image =\n", image)
@@ -203,43 +197,47 @@ def main(image_path, verbose=False):
 
     # Os canais BGR de uma imagem podem ser divididos em planos individuais quando necessário. Esta separação nos
     # permite avaliar o quanto cada componente de cor está presente em uma imagem. Em seguida, os canais individuais
-    # podem ser mesclados novamente para formar uma imagem BGR.
-    (b, g, r) = cv2.split(roi)
+    # podem ser mesclados novamente para formar uma imagem BGR. Para executar esta análise, utilizaremos a imagem 
+    # "bgr-led.jpg", também presente na pasta 99_Images.
+    image = cv2.imread("../99_Images/bgr-led.jpg")
+    (b, g, r) = cv2.split(image)
     merged = cv2.merge((b, g, r))
-    stacked = np.hstack((roi, merged))
-    cv2.imshow("ROI-Merged", stacked)
+    stacked = np.hstack((image, merged))
+    cv2.imshow("Original-Merged", stacked)
     stacked = np.hstack((b, g, r))
     cv2.imshow("Blue-Green-Red", stacked)
     cv2.waitKey(0)
-    cv2.destroyAllWindows()
 
     # Como você deve ter notado, o resultado da separação dos canais resulta mais uma vez em imagens em escala de cinza.
     # Após a separação de canais, temos 3 novos objetos com um único canal de cor. Por padrão, o OpenCV interpreta
     # imagens com um único canal em escala de cinza. E como devemos interpretar estas imagens? Quanto mais próximo da
-    # cor branca um pixel estiver, maior é a presença do canal de cor ele representa sobre a imagem original. Quanto
-    # mais próximo da cor preta um pixel estiver, menor é a presença do canal de cor ele representa sobre a imagem
+    # cor branca um pixel estiver, maior é a presença do canal de cor que ele representa sobre a imagem original. Quanto
+    # mais próximo da cor preta um pixel estiver, menor é a presença do canal de cor que ele representa sobre a imagem
     # original.
 
     # Para facilitar a identificação de cada canal e a interpretação de sua imagem, podemos agora ajustar estes objetos
     # para uma representação em 3 canais, preenchendo os canais faltantes com zeros. Desta forma teremos uma visão mais
     # clara da participação de cada canal de cor na formação da imagem original.
-    (height, width, depth) = roi.shape
+    (height, width, depth) = image.shape
     zeros = np.zeros((height, width), dtype="uint8")
     b = cv2.merge((b, zeros, zeros))
     g = cv2.merge((zeros, g, zeros))
     r = cv2.merge((zeros, zeros, r))
-    stacked = np.hstack((roi, b, g, r, merged))
-    cv2.imshow("ROI-Blue-Green-Red-Merged", stacked)
+    stacked = np.hstack((b, g, r))
+    cv2.imshow("Blue-Green-Red", stacked)
     cv2.waitKey(0)
 
     # Como resultado, fica evidente qual canal de cor cada uma destas imagens representa, assim como sua interpretação.
     # Quanto mais próximo um pixel estiver da cor de seu canal, maior é a presença desta cor sobre a imagem original.
     # Quanto mais próximo da cor preta um pixel estiver, menor é a presença do canal de cor ele representa sobre a
-    # imagem original. Note, por exemplo, como o fundo de todas as imagens é representado pela cor pura de seu canal.
-    # Isto se deve pelo fato de que o fundo desta imagem é branco. Observe também as diferenças entre os canais nos
-    # contornos e a no preenchimento deste sol. As bordas possuem pouca presença de cada canal, por ser desenhada na cor
-    # preta. Já o preenchimento do sol possui certa presença dos canais verde e vermelho para formar os tons de laranja
-    # desta imagem.
+    # imagem original. Note, por exemplo, como o fundo de todas as imagens é representado pela cor preta. Isto se deve
+    # pelo fato de que o fundo desta imagem é realmente preta e não há presença das cores azul, verde ou vermelha nesta
+    # região. Observe também as diferenças entre os canais no preenchimento das cores de cada um dos LEDs. O LED azul
+    # (led inferior esquerdo) está evidenciado na primeira imagem, sendo este o objeto com a cor mais intensa nesta
+    # imagem. O mesmo efeito pode ser observado nas demais imagens, onde o LED que representa cada cor primária possui
+    # maior intensidade em sua respectiva imagem. Também podemos observar que nenhum dos LEDs é composto por uma cor
+    # primária pura, pois é possível notar tons de cor mais fracos nos LEDs que não representam o canal de cor principal
+    # de uma imagem.
 
     # Uma vez que todas todas as operações com imagens deste tutorial foram apresentadas, podemos finalizar a execução
     # main ao salvar nossa última em imágem em disco. O método imwrite do módulo cv2 é capaz de realizar a escrita de um
@@ -248,13 +246,6 @@ def main(image_path, verbose=False):
     cv2.destroyAllWindows()
 
 
-# Para finalizar, realizamos a chamada da função main, que receberá parâmetros a partir da linha de comandos
+# Para finalizar, realizamos a chamada da função main
 if __name__ == '__main__':
-    # Construção e execução do decodificador parâmetros de linha de comando
-    import argparse
-    parser = argparse.ArgumentParser(description="Operações Básicas com Imagens")
-    parser.add_argument("-i", "--image", required=True, help="Endereço de Imagem")
-    parser.add_argument("-v", "--verbose", default=False, help="Modo Verbose")
-    args = parser.parse_args()
-    # Chamada da função main, que recebe os comandos de linha
-    main(args.image, args.verbose)
+    main()

@@ -20,7 +20,7 @@ A cada módulo deste projeto você encontrará implementações simples, com ref
 
 ### [06. Transformação Geométricas de Imagens](06_Image_Transformations/transformation.py)
 
-### 07. Histograma
+### [07. Histograma](07_Histogram/histogram.py)
 
 ### 08. Convolução
 
