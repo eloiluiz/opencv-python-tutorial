@@ -43,7 +43,7 @@ __author__ = "Eloi Giacobbo"
 __copyright__ = 'Copyright 2020, OpenCV Python Tutorial'
 __credits__ = ["Emili Bohrer"]
 __license__ = "GPL-3.0"
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 __maintainer__ = "Eloi Giacobbo"
 __status__ = "Development"
 
@@ -88,7 +88,7 @@ def main():
     # A função waitkey do módulo cv2 executa uma pausa na execução do código e aguarda que uma tecla seja pressionada em
     # uma janela do OpenCV. Note que o OpenCV não possui interface com o console, apenas com as janelas criadas pelo
     # próprio módulo. Seu parâmetro de entrada define o tempo que será aguardado para a captura de teclas, em
-    # milisegundos. Caso o valor de entrada seja zero, esta pausa será por tempo indeterminado, até que uma tecla seja
+    # milissegundos. Caso o valor de entrada seja zero, esta pausa será por tempo indeterminado, até que uma tecla seja
     # pressionada. Esta função retorna o valor ASCII da tecla pressionada ou -1 se nenhuma teca for pressionada. O uso
     # da função waitKey é especialmente importante para a impressão de imagens através do módulo cv2. O módulo cv2 não
     # pausa a execução de um código quando imagens são impressas em tela. Quando a execução de um código chega ao final,
@@ -126,7 +126,7 @@ def main():
     cv2.waitKey(0)
 
     # Quando desejado, podemos ainda inserir molduras em uma imagem com a função copyMakeBorder do módulo cv2. Esta
-    # recebe como argumento a largura de cada seção moldura (top, botton, left, right) e o tipo de moldura.
+    # recebe como argumento a largura de cada seção moldura (top, bottom, left, right) e o tipo de moldura.
     constant = cv2.copyMakeBorder(roi, 10, 10, 10, 10, cv2.BORDER_CONSTANT, value=[0, 0, 255])
     reflect = cv2.copyMakeBorder(roi, 10, 10, 10, 10, cv2.BORDER_REFLECT)
     replicate = cv2.copyMakeBorder(roi, 10, 10, 10, 10, cv2.BORDER_REPLICATE)
@@ -173,7 +173,7 @@ def main():
 
     # Ainda sobre conversões de padrões de cores, devemos nos atentar ao número de canais que cada padrão de cores
     # possui. Ao convertermos uma imagem para escala de cinza, por exemplo, é possível verificar que o número de canais
-    # da imagem é reduzido para apenas 1. Uma vez convertida para escala de cinza, uma imagem não podera ser facilmente
+    # da imagem é reduzido para apenas 1. Uma vez convertida para escala de cinza, uma imagem não poderá ser facilmente
     # retornada para padrões com múltiplos canais, pois informações foram perdidas na conversão.
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     print("\nGray Shape =", gray.shape)
@@ -240,7 +240,7 @@ def main():
     # de uma imagem.
 
     # Uma vez que todas todas as operações com imagens deste tutorial foram apresentadas, podemos finalizar a execução
-    # main ao salvar nossa última em imágem em disco. O método imwrite do módulo cv2 é capaz de realizar a escrita de um
+    # main ao salvar nossa última em imagem em disco. O método imwrite do módulo cv2 é capaz de realizar a escrita de um
     # objeto de imagem no caminho indicado.
     cv2.imwrite("output_image.jpg", stacked)
     cv2.destroyAllWindows()

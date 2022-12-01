@@ -40,13 +40,11 @@ __author__ = "Eloi Giacobbo"
 __copyright__ = 'Copyright 2020, OpenCV Python Tutorial'
 __credits__ = ["Emili Bohrer"]
 __license__ = "GPL-3.0"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __maintainer__ = "Eloi Giacobbo"
 __status__ = "Development"
 
 # Em main, definimos a função principal do arquivo, onde as operações com imagens são executadas
-
-
 def main(image_path, verbose=False):
     """ Transformações Geométricas de Imagens
 
@@ -75,15 +73,15 @@ def main(image_path, verbose=False):
     # Em seguida, registramos as dimensões da imagem
     (height, width) = original.shape[:2]
 
-    # Inicialmente, veremos como realizar translações. O OpenCV realiza transformações geoméricas através da função
+    # Inicialmente, veremos como realizar translações. O OpenCV realiza transformações geométricas através da função
     # cv2.warpAffine. Esta função recebe como parâmetro de entrada a imagem original, a matriz de transformação desejada
     # e as dimensões da imagem de saída. A matriz transformação deve possuir dimensões 2 x 3 e tipo de dado float32.
     # Pela teoria de transformações geométricas, temos que matrizes de transformação 2D possuem dimensões 3 x 3. Porém,
     # a terceira linha destas matrizes é sempre constante e o OpenCV nos oferece uma abstração desta informação através
     # da função cv2.warpAffine. Se estiver interessado, confira o material disponibilizado pelo Professor Fernando V.
-    # Paulovich para relembrar um pouco mais sobre transformaçoes geométricas.
+    # Paulovich para relembrar um pouco mais sobre transformações geométricas.
 
-    # Dito isto, podemos seguir para nossa implementação da operação de translação em imagens. Primeiro definioms as
+    # Dito isto, podemos seguir para nossa implementação da operação de translação em imagens. Primeiro definimos as
     # coordenadas a serem utilizadas na translação e, em seguida, definimos as duas primeiras linhas da matriz de
     # translação. Para executar esta operação, lembre-se de como o sistema de coordenadas de imagens é definido pelo
     # OpenCV. Sendo assim, valores de positivos de translação em X movimentam uma imagem para direita e valores
@@ -100,7 +98,7 @@ def main(image_path, verbose=False):
     cv2.imshow("Translated", translated)
     cv2.waitKey(0)
 
-    # Nesta segunda operação, movimantamos a imagem em 100 pixles para a esquerda e 50 pixels para cima. Note que parte
+    # Nesta segunda operação, movimentamos a imagem em 100 pixels para a esquerda e 50 pixels para cima. Note que parte
     # da imagem do conteúdo da imagem foi perdido na operação anterior, pois parte dos dados foi transladado além dos
     # limites da imagem.
     Tx = -100
@@ -155,13 +153,13 @@ def main(image_path, verbose=False):
     cv2.waitKey(0)
 
     # Como resultado, temos novamente a imagem rotacionada em 45 graus. Como esta imagem foi rotacionada em torno de seu
-    # centro, a perda de informações um pouco menor e somos capazes de enchergar uma área maior da imagem rotacionada.
+    # centro, a perda de informações um pouco menor e somos capazes de enxergar uma área maior da imagem rotacionada.
     # Note que esta rotação foi realizada no sentido anti-horário. A função getRotationMatrix2D considera ângulos
     # positivos como rotações no sentido anti-horário e ângulos negativos como rotações no sentido horário. Agora nos
     # resta apenas resolver o problema da perda de informações para completarmos uma rotação perfeita.
 
     # Para evitar a perda de informações em uma rotação, não basta simplesmente aumentar o tamanho da imagem de saída.
-    # Precisamos efetuar uma série de operações. Primeiro, precisamos cálcular a largura e altura da imagem de saída
+    # Precisamos efetuar uma série de operações. Primeiro, precisamos calcular a largura e altura da imagem de saída
     # utilizando trigonometria. Em seguida, temos que transladar a imagem para o seu novo ponto central e, finalmente,
     # podemos seguir para a operação de rotação.
 
@@ -187,7 +185,7 @@ def main(image_path, verbose=False):
     # rotações simples, fornecendo apenas a imagem a ser rotacionada e o ângulo de rotação. Ou então, podemos utilizar a
     # função imutils.rotate_bound quando desejamos rotacionar uma imagem sem nos preocuparmos com perda de informações.
     # Infelizmente, o parâmetro de ângulo destas funções não foi padronizado e precisamos ter cuidado com o sentido de
-    # rotação de imagens ao usar a biblioteca imutils. imutils.rotate rotaciona imagens no sendido horário quando
+    # rotação de imagens ao usar a biblioteca imutils. imutils.rotate rotaciona imagens no sentido horário quando
     # inserimos ângulos positivos, enquanto imutils.rotate_bound rotaciona imagens no sentido anti-horário.
     rotated = imutils.rotate(original, 45)
     cv2.imshow("Rotated", rotated)
@@ -225,7 +223,7 @@ def main(image_path, verbose=False):
     # A última transformação que abordaremos neste arquivo é a chamada reflexão. Esta operação nos permite espelhar uma
     # imagem sobre o eixo X e/ou Y do sistema de coordenadas. No entanto, não podemos utilizar a matriz de transformação
     # usual para implementar esta operação. Ao refletirmos uma imagem sobre um eixo, nossa imagem deixaria de estar
-    # presente no primeiro quadrante do sistema de coordanadas. Como sabemos, não somos capazes de efetivamente definir 
+    # presente no primeiro quadrante do sistema de coordenadas. Como sabemos, não somos capazes de efetivamente definir 
     # coordenadas negativas em um ndarray. Felizmente, o OpenCV nos oferece também uma função para realizar operações de
     # reflexão. O método cv2.flip recebe como parâmetro a imagem original e uma variável de seleção do tipo de reflexão.
     # Quando inserido o valor 1 a imagem de entrada será refletida na horizontal, com o valor 0 a imagem será refletida

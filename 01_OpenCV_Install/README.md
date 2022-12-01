@@ -18,9 +18,9 @@ Instalar o OpenCV em distribuições Linux está cada vez mais fácil, pois já 
 Para realizar este processo, recomendo o [tutorial de instalação do OpenCV no Ubuntu](https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/) disponibilizado pela [PyImageSearch](https://www.pyimagesearch.com/about/).
 
 ## Suporte Gráfico para o WSL2
-WSL não oferece suporte nativo a gráficos. Em sistemas Linux, o recurso responsável for oferecer suporte gráfico, *mouse* e teclado é o chamado *Xserver*. Podemos, no entanto, executar este serviço no próprio Windows e executar aplicativos clientes no WSL2. 
+Até recentemente o WSL não oferecia suporte para suporte nativo a gráficos. Em sistemas Linux, o recurso responsável for oferecer suporte gráfico, *mouse* e teclado é o chamado *Xserver*. Ao atualizar seu sistema operacional para o Windows 10 Build 19044 ou Windows 11, este suporte estará disponível ao instalar o WSL pela primeira vez ou ao atualizar sua instalação atual. Para mais informações, acesse este artigo sobre como [executar aplicativos de GUI do Linux no Subsistema do Windows para Linux](https://learn.microsoft.com/pt-br/windows/wsl/tutorials/gui-apps).
 
-Estou usando o [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/) que é uma ferramenta de código aberto e é atualizada com frequência. Se preferir, você também pode usar o [Xming](https://sourceforge.net/projects/xming/), [MobaXterm](https://mobaxterm.mobatek.net/), [Cygwin/X](https://x.cygwin.com/), entre outros.
+Versões de sistemas operacionais anteriores, no entanto, podem executar este serviço de *Xserver* no próprio Windows e executar aplicativos clientes no WSL2. Para isto, utilizei o [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/) que é uma ferramenta de código aberto e é atualizada com frequência. Se preferir, você também pode usar o [Xming](https://sourceforge.net/projects/xming/), [MobaXterm](https://mobaxterm.mobatek.net/), [Cygwin/X](https://x.cygwin.com/), entre outros.
 
 Para oferecer este suporte gráfico ao WSL, o primeiro passo é instalar o gerenciador gráfico de sua escolha. Em seguida, configure o endereço de saída gráfica do seu sistema WSL por meio dos seguintes comandos:
 
@@ -82,8 +82,10 @@ O suporte de acesso ao hardware pelo WSL2 ainda é bastante limitado, por exempl
 
 Adrian Rosebrock. How to install OpenCV 4 on Ubuntu. PyImageSearch. Disponível em: https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/. Acesso em: 13 set. de 2020.
 
+Can't use X-Server in WSL 2 #4106. Microsoft WSL on GitHub. Disponível em: https://github.com/microsoft/WSL/issues/4106. Acesso em: 13 set. de 2020.
+
+Executar aplicativos de GUI do Linux no Subsistema do Windows para Linux. Microsoft Learn: WSL tutorials. Disponível em: https://learn.microsoft.com/pt-br/windows/wsl/tutorials/gui-apps. Acesso em: 30 nov. de 2022.
+
 Guia de instalação do Subsistema Windows para Linux para Windows 10. Microsoft Docs. Disponível em: https://docs.microsoft.com/pt-br/windows/wsl/install-win10. Acesso em: 13 set. de 2020.
 
 Mianzhi Wang. Setting Up WSL with Graphics and Audio. Disponível em: https://research.wmz.ninja/articles/2017/11/setting-up-wsl-with-graphics-and-audio.html. Acesso em: 13 set. de 2020.
-
-Can't use X-Server in WSL 2 #4106. Microsoft WSL on GitHub. Disponível em: https://github.com/microsoft/WSL/issues/4106. Acesso em: 13 set. de 2020.

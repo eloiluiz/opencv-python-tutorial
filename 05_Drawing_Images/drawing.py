@@ -41,7 +41,7 @@ __author__ = "Eloi Giacobbo"
 __copyright__ = 'Copyright 2020, OpenCV Python Tutorial'
 __credits__ = ["Emili Bohrer"]
 __license__ = "GPL-3.0"
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __maintainer__ = "Eloi Giacobbo"
 __status__ = "Development"
 
@@ -62,7 +62,7 @@ def main():
     cv2.imshow("Image", image)
     cv2.waitKey(0)
 
-    # Agora, desenharemos manuamente uma borda sobre esta imagem, utilizando linhas. A função cv2.line recebe como
+    # Agora, desenharemos manualmente uma borda sobre esta imagem, utilizando linhas. A função cv2.line recebe como
     # parâmetros principais a imagem onde a linha será desenhada, as coordenadas cartesianas (x, y) para o início e fim
     # desta linha, sua cor e espessura.
     cv2.line(image, (0, 0), (0, 300), (0, 0, 255), 10)
